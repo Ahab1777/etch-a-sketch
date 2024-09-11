@@ -14,7 +14,6 @@
 .square {
     aspect-ratio: 1 / 1;
     background-color: black;
-    /* flex: 1 0 calc(100% * (1/(--gridSize))); */
 }
 
 /* .square:hover {

@@ -3,11 +3,11 @@
 
 
 const container = document.querySelector('.container')
-
+const newGridBtn = document.querySelector(".new-grid-btn")
+const root = document.documentElement
 
 const gridGenerator = (width, length) => {
     const square = document.createElement('div')
-    // document.square.style.width = `${1/16}%`
     square.classList.add("square")
     for (let i = 0 ; i < width ; i++){
         for (let j = 0 ; j < length ; j++){
@@ -34,6 +34,7 @@ const styleSquares = (gridSize) => {
     }
 }
 
+//prompt for grid size
 const requestNewGridSize = () => {
     let newGridSize = prompt("What size of grid do you want?")
     if (newGridSize > 100) {
@@ -42,7 +43,6 @@ const requestNewGridSize = () => {
     return parseInt(newGridSize)
 }
 
-const newGridBtn = document.querySelector(".new-grid-btn")
 
 newGridBtn.addEventListener('click', () => {
     while (container.firstChild){
@@ -53,3 +53,8 @@ newGridBtn.addEventListener('click', () => {
     styleSquares(gridSize)
 })
 
+console.log(root.style)
+
+const colorRandomizer = () => {
+
+}

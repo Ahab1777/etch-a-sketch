@@ -1,5 +1,9 @@
+//TODO
+//erase previous grid when a new one is created
+
 
 const container = document.querySelector('.container')
+
 
 const gridGenerator = (width, length) => {
     const square = document.createElement('div')
@@ -16,28 +20,36 @@ const gridGenerator = (width, length) => {
     } 
 }
 
-// const squaresNode = document.querySelectorAll('.square')
+// gridGenerator(16 , 16)
 
-gridGenerator(16 , 16)
-
-const squareNode = container.childNodes
-
-for (let i = 0 ; i < squareNode.length ; i++){
-    squareNode[i].addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = 'white'
-        
-    })
+//apply trail effect to grid
+const styleSquares = (gridSize) => {
+    const squareNode = container.childNodes
+    for (let i = 0 ; i < squareNode.length ; i++){
+        squareNode[i].addEventListener('mouseover', (e) => {
+            e.target.style.backgroundColor = 'white'
+            
+        })
+        squareNode[i].style.flex = `1 0 calc(100% * (1/(${gridSize})))`
+    }
 }
 
+const requestNewGridSize = () => {
+    let newGridSize = prompt("What size of grid do you want?")
+    if (newGridSize > 100) {
+        newGridSize = prompt("The maximum size of a grid is 100 (100x100). Please, provide a new size for the grid:")
+    }
+    return parseInt(newGridSize)
+}
 
+const newGridBtn = document.querySelector(".new-grid-btn")
 
+newGridBtn.addEventListener('click', () => {
+    while (container.firstChild){
+        container.firstChild.remove()
+    }
+    const gridSize = requestNewGridSize()
+    gridGenerator(gridSize, gridSize)
+    styleSquares(gridSize)
+})
 
-//     squaresNode[i].computedStyleMap.backgroundColor = 'white'
-    // squaresNode[i].addEventListener('mouseover', () => {
-    //     squaresNode[i].style.backgroundColor = 'white'
-    // })
-// }
-//create square div
-//request width and length of grid
-//insert into container div the number of squares (w x l)
-//make container flexbox so that grid respects the desired width and length

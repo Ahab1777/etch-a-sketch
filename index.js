@@ -13,6 +13,7 @@ const gridGenerator = (width, length) => {
         for (let j = 0 ; j < length ; j++){
             const clonedSquare = square.cloneNode(true)
             if (j === 15) {
+                //for testing
                 clonedSquare.classList.add("sixteenth")
             }
             container.appendChild(clonedSquare)
@@ -27,8 +28,12 @@ const styleSquares = (gridSize) => {
     const squareNode = container.childNodes
     for (let i = 0 ; i < squareNode.length ; i++){
         squareNode[i].addEventListener('mouseover', (e) => {
-            e.target.style.backgroundColor = 'white'
-            
+            //grabs current opacity and adds 10%
+            e.target.style.backgroundColor = 'black'
+            let currentOpacity = Number(e.target.style.opacity)
+            currentOpacity += 0.1
+            e.target.style.opacity = currentOpacity
+            console.log(typeof(currentOpacity))
         })
         squareNode[i].style.flex = `1 0 calc(100% * (1/(${gridSize})))`
     }

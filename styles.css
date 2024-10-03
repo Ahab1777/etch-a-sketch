@@ -9,11 +9,13 @@
 .container {
     display: flex;
     flex-wrap: wrap;
+    border: 2px solid black;
 }
 
 .square {
     aspect-ratio: 1 / 1;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
+    opacity: 1;
 }
 
 /* .square:hover {
